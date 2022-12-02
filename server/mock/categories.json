@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "title": "Duplo",
+    "slug": "duplo",
+    "descr": "DUPLO Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid dicta perspiciatis magnam perferendis dolorum, quibusdam quidem accusantium laudantium sed nulla nihil aut. Inventore illum repellendus dolores accusantium. Officia placeat odio eum quae neque cum exercitationem ipsam iusto assumenda perferendis delectus inventore perspiciatis, expedita fugit, nostrum commodi architecto nihil cupiditate! Atque.",
+    "imgName": "duplo",
+    "isShow": true
+  },
+  {
+    "id": 2,
+    "title": "Classic",
+    "slug": "classic",
+    "descr": "",
+    "imgName": "",
+    "isShow": false
+  },
+  {
+    "id": 3,
+    "title": "Toy Story",
+    "slug": "toy-story",
+    "descr": "",
+    "imgName": "toy-story",
+    "isShow": true
+  },
+  {
+    "id": 4,
+    "title": "City",
+    "slug": "city",
+    "descr": "",
+    "imgName": "city",
+    "isShow": true
+  },
+  {
+    "id": 5,
+    "title": "Creator",
+    "slug": "creator",
+    "descr": "",
+    "imgName": "creator",
+    "isShow": true
+  },
+  {
+    "id": 6,
+    "title": "Disney",
+    "slug": "disney",
+    "descr": "",
+    "imgName": "disney",
+    "isShow": true
+  },
+  {
+    "id": 7,
+    "title": "Friends",
+    "slug": "friends",
+    "descr": "",
+    "imgName": "friends",
+    "isShow": true
+  },
+  {
+    "id": 8,
+    "title": "Marvel",
+    "slug": "marvel",
+    "descr": "",
+    "imgName": "marvel",
+    "isShow": true
+  },
+  {
+    "id": 9,
+    "title": "Mickey and Friends",
+    "slug": "mickey-mouse",
+    "descr": "",
+    "imgName": "mickey-mouse",
+    "isShow": true
+  },
+  {
+    "id": 10,
+    "title": "Star Wars",
+    "slug": "star-wars",
+    "descr": "",
+    "imgName": "star-wars",
+    "isShow": true
+  },
+  {
+    "id": 11,
+    "title": "Nexo Knights",
+    "slug": "nexo-knights",
+    "descr": "",
+    "imgName": "nexo-knights",
+    "isShow": true
+  },
+  {
+    "id": 12,
+    "title": "Ninjago",
+    "slug": "ninjago",
+    "descr": "",
+    "imgName": "ninjago",
+    "isShow": true
+  },
+  {
+    "id": 13,
+    "title": "Harry Potter",
+    "slug": "harry-potter",
+    "descr": "",
+    "imgName": "harry-potter",
+    "isShow": true
+  },
+  {
+    "id": 14,
+    "title": "Boost",
+    "slug": "boost",
+    "descr": "",
+    "imgName": "boost",
+    "isShow": true
+  },
+  {
+    "id": 15,
+    "title": "Architecture",
+    "slug": "architecture",
+    "descr": "",
+    "imgName": "architecture",
+    "isShow": true
+  },
+  {
+    "id": 16,
+    "title": "Super Mario",
+    "slug": "super-mario",
+    "descr": "",
+    "imgName": "super-mario",
+    "isShow": true
+  },
+  {
+    "id": 17,
+    "title": "Minions",
+    "slug": "minions",
+    "descr": "",
+    "imgName": "minions",
+    "isShow": true
+  },
+  {
+    "id": 18,
+    "title": "Technic",
+    "slug": "technic",
+    "descr": "",
+    "imgName": "technic",
+    "isShow": true
+  },
+  {
+    "id": 19,
+    "title": "Dots",
+    "slug": "dots",
+    "descr": "",
+    "imgName": "dots",
+    "isShow": true
+  },
+  {
+    "id": 20,
+    "title": "Batman",
+    "slug": "batman",
+    "descr": "",
+    "imgName": "batman",
+    "isShow": true
+  },
+  {
+    "id": 21,
+    "title": "BrickHeadz",
+    "slug": "brick-headz",
+    "descr": "",
+    "imgName": "brick-headz",
+    "isShow": true
+  },
+  {
+    "id": 22,
+    "title": "Minifigures",
+    "slug": "minifigures",
+    "descr": "",
+    "imgName": "minifigures",
+    "isShow": true
+  },
+  {
+    "id": 23,
+    "title": "Minecraft",
+    "slug": "minecraft",
+    "descr": "",
+    "imgName": "minecraft",
+    "isShow": true
+  },
+  {
+    "id": 24,
+    "title": "Art",
+    "slug": "art",
+    "descr": "",
+    "imgName": "art",
+    "isShow": true
+  },
+  {
+    "id": 25,
+    "title": "Ideas",
+    "slug": "ideas",
+    "descr": "",
+    "imgName": "ideas",
+    "isShow": true
+  },
+  {
+    "id": 26,
+    "title": "LEGO Movie",
+    "slug": "lego-movie",
+    "descr": "",
+    "imgName": "movie",
+    "isShow": true
+  },
+  {
+    "id": 27,
+    "title": "Monkie Kid",
+    "slug": "monkie-kid",
+    "descr": "",
+    "imgName": "monkie-kid",
+    "isShow": true
+  },
+  {
+    "id": 28,
+    "title": "Speed Champions",
+    "slug": "speed-champions",
+    "descr": "",
+    "imgName": "speed-champions",
+    "isShow": true
+  },
+  {
+    "id": 29,
+    "title": "Mindstorms",
+    "slug": "mindstorms",
+    "descr": "",
+    "imgName": "mindstorms",
+    "isShow": true
+  },
+  {
+    "id": 30,
+    "title": "Elves",
+    "slug": "elves",
+    "descr": "",
+    "imgName": "elves",
+    "isShow": true
+  },
+  {
+    "id": 31,
+    "title": "Vidiyo",
+    "slug": "vidiyo",
+    "descr": "",
+    "imgName": "vidiyo",
+    "isShow": true
+  },
+  {
+    "id": 32,
+    "title": "Hidden Side",
+    "slug": "hidden-side",
+    "descr": "",
+    "imgName": "hidden-side",
+    "isShow": true
+  },
+  {
+    "id": 33,
+    "title": "Jurassic World",
+    "slug": "jurassic-world",
+    "descr": "",
+    "imgName": "jurassic-world",
+    "isShow": true
+  },
+  {
+    "id": 34,
+    "title": "Overwatch",
+    "slug": "overwatch",
+    "descr": "",
+    "imgName": "overwatch",
+    "isShow": true
+  },
+  {
+    "id": 35,
+    "title": "Collections",
+    "slug": "collections",
+    "descr": "",
+    "imgName": "collections",
+    "isShow": false
+  }
+]

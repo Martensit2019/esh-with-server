@@ -1,0 +1,200 @@
+.sidebar {
+  width: 0;
+  overflow: hidden;
+  position: relative;
+  // width: 60px;
+  // border: 1px solid #ffc42e;
+  background-color: #ffc42e;
+ 
+  @media (max-width: 1280px) {
+    position: fixed;
+    // height: 100vh;
+  }
+  // padding-top: 53px;
+  &.open {
+    max-width: 320px;
+    width: 100%;
+    z-index: 10;
+  }
+  .sidebar__top{
+     background-color: #ffc42e;
+     height: 122px;
+  }
+  .sidebar__burger{
+    position: absolute;
+    top: 22px;
+    left: 15px;
+    @media(max-width:1280px){
+      right: 15px;
+      left: auto;
+    }
+  }
+  .sidebar-form {
+    &__wrapper {
+      background-color: #fff;
+      border: 1px solid #ffc42e;
+      margin-top: 100px;
+      padding: 10px 15px;
+      margin: 100px 15px 50px;
+      border-radius: 10px;
+    }
+    &__block {
+      margin-bottom: 50px;
+    }
+    &__title {
+      font-weight: 700;
+    }
+    &__body {
+      
+      width: 100%;
+    }
+    &__inputs {
+      display: flex;
+      justify-content: space-between;
+      margin: 7px 0;
+    }
+    &__input {
+      max-width: 45%;
+      border-radius: 10px;
+    border: 1px solid #ffc42e;
+    background-color: transparent;
+    padding: 5px 15px;
+    }
+    &__rangers{
+      width: 100%;
+      position: relative;
+      margin-top: 10px;
+    }
+    // &__range{
+    //   position: absolute;
+    //   width: 100%;
+    // }
+    // &__range{
+    //   -webkit-appearance: none;
+    //     // display: inline-block;
+    //     width: 100%;
+    //     height: 2px;
+    //     // border-top-left-radius: 2px;
+    //     // border-top-right-radius: 2px;
+    //     outline: none;
+    //     &::-webkit-slider-thumb {
+    //       -webkit-appearance: none;
+    //       width:13px;
+    //       height: 13px;
+    //       // background: 
+    //       border: 3px solid #ffc42e;
+    //       border-radius: 50%;
+    //       cursor: pointer;
+    //     }
+    //     &::-moz-range-track {
+    //         -moz-appearance: none;
+    //         display: inline-block;
+    //         width: 100%;
+    //         height: 2px;
+    //         background: #ff9514;
+    //         border-top-left-radius: 2px;
+    //         border-top-right-radius: 2px;
+    //         outline: none;
+    //       }
+    // }
+    &__btn{
+      display: block;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: transparent;
+      color: #ffc42e;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ffc42e;
+      cursor: pointer;
+      &:hover {
+        background-color: #ffc42e;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// на 950px делаем absolute при открытии
+.slider {
+  position: relative;
+  width: 100%;
+}
+
+.slider__track,
+.slider__range,
+.slider__left-value,
+.slider__right-value {
+  position: absolute;
+}
+
+.slider__track,
+.slider__range {
+  border-radius: 3px;
+  height: 3px;
+}
+
+.slider__track {
+  background-color: #ced4da;
+  width: 100%;
+  z-index: 1;
+}
+
+.slider__range {
+  background-color: #ffc42e;
+  z-index: 2;
+}
+
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 100%;
+  outline: none;
+}
+
+.thumb--left {
+  z-index: 3;
+}
+
+.thumb--right {
+  z-index: 4;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  border: 2px solid #ffc42e;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  border: 4px solid #ffc42e;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}

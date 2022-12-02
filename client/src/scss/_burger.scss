@@ -1,0 +1,57 @@
+.burger {
+  width: 20px;
+  height: 28px;
+  cursor: pointer;
+  // margin: 0 auto;
+  padding: 3px 0;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  transform: translate3d(0, 0, 0);
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    left: -8px;
+    top: -4px;
+    z-index: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+  }
+  & .bar {
+    display: block;
+    height: 2px;
+    width: 20px;
+    margin: 4px auto;
+    position: relative;
+    background-color: #000;
+    transition: all 0.2s ease-in-out;
+  }
+  & .middle {
+    margin: 0 auto;
+    height: 1px;
+  }
+  &:hover {
+    & .top {
+      transform: rotateZ(45deg) translate(9px, -6px);
+      width: 12px;
+    }
+    & .middle {
+      transform: translateX(0);
+    }
+    & .bottom {
+      transform: rotateZ(-45deg) translate(9px, 6px);
+      width: 12px;
+    }
+  }
+  &.prev:hover {
+    & .top {
+      transform: rotateZ(-45deg) translate(-9px, -6px);
+    }
+    & .bottom {
+      transform: rotateZ(45deg) translate(-9px, 6px);
+    }
+  }
+}
