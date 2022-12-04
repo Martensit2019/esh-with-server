@@ -1,4 +1,6 @@
 {
   "port": 8080,
-  "mongoUri": "mongodb+srv://Eshop:Eshop-1234@cluster0.dteud3o.mongodb.net/?retryWrites=true&w=majority"
+  "mongoUri": "mongodb+srv://Eshop:Eshop-1234@cluster0.dteud3o.mongodb.net/?retryWrites=true&w=majority",
+  "accessSercet": "super secret from backend",
+  "refreshSercet": "super refresh key"
 }
