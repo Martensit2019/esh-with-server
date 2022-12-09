@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs'
 import { useLocation } from 'react-router-dom'
+import { getProducts, getProductsLoading, loadProductBySlug } from '../store/products'
 
 const Product = () => {
+  const dispatch = useDispatch()
   const { pathname } = useLocation()
-  console.log(pathname);
   const pathnameArr = pathname.split('/')
   const slug = pathnameArr[pathnameArr.length - 1]
+  const products = useSelector(getProducts())
+  const isProductsLoading = useSelector(getProductsLoading())
   const [product, setProduct] = useState({})
+  const [imgUrl, setImgUrl] = useState('')
   const [isFav, setIsFav] = useState(false)
   const [isCompare, setIsCompare] = useState(false)
 
-  const imgUrl = `http://m977726h.beget.tech/images/eshop/product/${product.articul}-1.jpg`
-
   useEffect(() => {
-    axios.get(`http://localhost:3001/products?slug=${slug}`).then((res) => {
-      console.log(res.data[0])
-      setProduct(res.data[0])
-    })
-  }, [])
+    dispatch(loadProductBySlug(slug))
+  }, [slug])
+  useEffect(() => {
+    if (!isProductsLoading) {
+      setProduct(products[0])
+      setImgUrl(`http://m977726h.beget.tech/images/eshop/product/${products[0].articul}-1.jpg`)
+    }
+  }, [isProductsLoading])
 
   const toggleFavorite = () => {
     setIsFav((prev) => !prev)
@@ -31,7 +36,7 @@ const Product = () => {
   return (
     <div className="product-page">
       <div className="container">
-      <Breadcrumbs list={['Каталог', product.title]} />
+        {!isProductsLoading && <Breadcrumbs list={['Каталог', products[0].title]} />}
         <div className="product-page__inner">
           <div className="product-page__img">
             <img src={imgUrl} alt="" />

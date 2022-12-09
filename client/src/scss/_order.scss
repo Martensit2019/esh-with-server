@@ -56,6 +56,12 @@
 }
 .order-form__control {
   margin-bottom: 20px;
+  position: relative;
+}
+.order-form__error{
+  margin-top: 5px;
+  font-size: 12px;
+  color: red;
 }
 .order-input {
   width: 100%;
@@ -63,6 +69,18 @@
   border: 1px solid #ffc42e;
   border-radius: 10px;
   padding: 0 15px;
+  &--error{
+    border: 1px solid red;
+  }
+}
+.input-show{
+  position: absolute;
+  width: 20px;
+  height: 48px;
+  background-color: transparent;
+  right: 24px;
+  border: 0px;
+  cursor: pointer;
 }
 .order-text {
   font-size: 14px;

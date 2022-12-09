@@ -6,6 +6,7 @@ import filterReducer from './filter'
 import favouriteReducer from './favourite'
 import compareSlice from './compare'
 import cartReducer from './cart'
+import authReducer from './auth'
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   filter: filterReducer,
   favourite: favouriteReducer,
   compare: compareSlice,
-  cart: cartReducer
+  cart: cartReducer,
+  auth: authReducer
 })
 
 export function createStore() {

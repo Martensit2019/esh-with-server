@@ -1,11 +1,16 @@
 [
   {
-    "name": "Admin",
-    "email": "admin@admin.ru",
-    "password": "$2a$12$QQx7b.IXkfoW.MokUPObVenMjafHIEOLz32uVUFHcropOm/uz.2aC",
+    "fio": "Admin",
+    "email": "admin@admin.com",
+    "password": "$2a$12$euIUANF4BVtOLu5ZR7yAJ.SxCBMSQ3YePY6vTi3o1ubHX5wymTrXC",
     "role": "admin"
+  },
+  {
+    "fio": "Покупатель",
+    "email": "customer@customer.com",
+    "password": "$2a$12$r78uf9R99adJVKm0mTSrd.7DNuREN5OL13ZhkXs2kj0yW7H29qyCS",
+    "role": "customer",
+    "phone": "8(999)999-9999",
+    "address": "Адрес покупателя"
   }
 ]
-
-
-

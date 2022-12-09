@@ -19,7 +19,9 @@ const Catalog = () => {
   const pageSize = useSelector(getProductsPerPage())
   const selectedSort = useSelector(getSelectedSort())
   const currentPage = useSelector(getCurrentPage())
+  // const totalProducts = 100
   const totalProducts = useSelector(getTotalProducts())
+
 
   // useEffect(() => {
   //   if (search) {
@@ -48,6 +50,7 @@ const Catalog = () => {
           <h1 className="title-general">Каталог конструкторов LEGO для детей</h1>
           <TopFilter />
           {!isLoading ? <ProductsList products={products} />:<h1>Загрузка...</h1>}
+          
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}

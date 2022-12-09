@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+import LoginForm from './components/loginForm'
 import AdminLayout from './layouts/AdminLayout'
 import MainLayout from './layouts/MainLayout'
 import AdminIndex from './pages/admin'
@@ -10,6 +12,7 @@ import Boys from './pages/dlya-malchikov'
 import Baby from './pages/dlya-malyshey'
 import Mans from './pages/dlya-vzroslyh'
 import FavoritesPage from './pages/favorites'
+import Login from './pages/login'
 import Main from './pages/main'
 import Product from './pages/product'
 import StatusOrder from './pages/statusorder'
@@ -23,6 +26,38 @@ const routes = [
       </MainLayout>
     ),
   },
+
+  {
+    path: '/login',
+    element: (
+      <MainLayout>
+        <Login />
+      </MainLayout>
+    ),
+    children: [
+      {
+        path: ':type',
+        element: <Login />,
+      },
+    ],
+  },
+
+  // {
+  //   path: '/register',
+  //   element: (
+  //     <MainLayout>
+  //       <Register />
+  //     </MainLayout>
+  //   )
+  // },
+  // {
+  //   path: '/register',
+  //   element: (
+  //     <MainLayout>
+  //       <Login />
+  //     </MainLayout>
+  //   ),
+  // },
   {
     path: 'catalog',
     element: (

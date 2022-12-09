@@ -1,20 +1,26 @@
 import httpService from './http.service'
-const productEndpoint = "products/";
+const productEndpoint = "product";
 
 const productService = {
   fetchAll: async (sort, order, currentPage, pageSize) => {
-    const data = await httpService.get(`products?${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`)
+    const data = await httpService.get(`${productEndpoint}?${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`)
     return data
   },
   fetchByCategoryId: async (id, sort, order, currentPage, pageSize) => {
     const  data = await httpService.get(
-      `products?categoryId=${id}&${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`
+      `${productEndpoint}?categoryId=${id}&${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`
     )
     return  data
   },
   fetchByType: async (type, sort, order, currentPage, pageSize) => {
     const  data = await httpService.get(
-      `products?type=${type}&${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`
+      `${productEndpoint}?type=${type}&${sort}${order}_start=${(currentPage - 1) * pageSize}&_limit=${pageSize}`
+    )
+    return  data
+  },
+  fetchBySlug: async (slug) => {
+    const  data = await httpService.get(
+      `${productEndpoint}?slug=${slug}`
     )
     return  data
   },

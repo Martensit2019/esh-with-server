@@ -6,6 +6,7 @@ const tokenService = require('../services/token.service')
 const router = express.Router({ mergeParams: true })
 
 router.post('/signUp', [
+  check('fio', 'Минимальная длина имени 2 символа').isLength({ min: 2 }),
   check('email', 'Некорректный email').isEmail(),
   check('password', 'Минимальная длина пароля 8 символов').isLength({ min: 8 }),
   async (req, res) => {
@@ -33,9 +34,6 @@ router.post('/signUp', [
       const newUser = await User.create({
         ...req.body,
         password: hashedPassword,
-        name: 'name',
-        phone: 'phone',
-        adress: 'adress',
         role: 'customer',
       })
       const tokens = tokenService.generate({ _id: newUser._id })

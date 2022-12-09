@@ -7,8 +7,11 @@ import axios from "axios";
 // const http = axios.create({
 //   baseURL: configFile.apiEndPoint
 // });
+import config from "../config.json"
+
 const http = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: config.apiEndpoint
+  // baseURL: "http://localhost:3001/",
 });
 
 // http.interceptors.request.use(

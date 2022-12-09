@@ -39,9 +39,9 @@ const { productsRequested, productsRecived, totalRecived, productsRequestFailed 
 export const loadAllProducts = (sort, order, currentPage, pageSize) => async (dispatch) => {
   dispatch(productsRequested())
   try {
-    const { data, headers } = await productService.fetchAll(sort, order, currentPage, pageSize)
-    dispatch(productsRecived(data))
-    dispatch(totalRecived(headers['x-total-count']))
+    const { data } = await productService.fetchAll(sort, order, currentPage, pageSize)
+    dispatch(productsRecived(data.list))
+    dispatch(totalRecived(data.total))
   } catch (error) {
     dispatch(productsRequestFailed(error.message))
   }
@@ -49,9 +49,9 @@ export const loadAllProducts = (sort, order, currentPage, pageSize) => async (di
 export const loadProductsByCategoryId = (id, sort, order, currentPage, pageSize) => async (dispatch) => {
   dispatch(productsRequested())
   try {
-    const { data, headers } = await productService.fetchByCategoryId(id, sort, order, currentPage, pageSize)
-    dispatch(productsRecived(data))
-    dispatch(totalRecived(headers['x-total-count']))
+    const { data } = await productService.fetchByCategoryId(id, sort, order, currentPage, pageSize)
+    dispatch(productsRecived(data.list))
+    dispatch(totalRecived(data.total))
   } catch (error) {
     dispatch(productsRequestFailed(error.message))
   }
@@ -59,9 +59,18 @@ export const loadProductsByCategoryId = (id, sort, order, currentPage, pageSize)
 export const loadProductsByType = (type, sort, order, currentPage, pageSize) => async (dispatch) => {
   dispatch(productsRequested())
   try {
-    const { data, headers } = await productService.fetchByType(type, sort, order, currentPage, pageSize)
+    const { data } = await productService.fetchByType(type, sort, order, currentPage, pageSize)
+    dispatch(productsRecived(data.list))
+    dispatch(totalRecived(data.total))
+  } catch (error) {
+    dispatch(productsRequestFailed(error.message))
+  }
+}
+export const loadProductBySlug = (slug) => async (dispatch) => {
+  dispatch(productsRequested())
+  try {
+    const { data } = await productService.fetchBySlug(slug)
     dispatch(productsRecived(data))
-    dispatch(totalRecived(headers['x-total-count']))
   } catch (error) {
     dispatch(productsRequestFailed(error.message))
   }
