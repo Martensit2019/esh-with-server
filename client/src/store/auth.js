@@ -46,11 +46,12 @@ export const { authRequestSuccess, authRequestFailed } = actions
 const authRequested = createAction('users/authRequested')
 
 export const signUp =
-  ({ email, password, ...rest }) =>
+  (data1) =>
   async (dispatch) => {
     dispatch(authRequested())
     try {
-      const data = await authService.register({ email, password })
+      const data = await authService.register(data1)
+      console.log('from store', data);
       localStorageService.setTokens(data)
       dispatch(authRequestSuccess({ userId: data.localId }));
     } catch (error) {

@@ -4,7 +4,8 @@ const HeaderUser = () => {
   const [isVisible, setIsVisible] = React.useState(false)
   return (
     <div className="header-user" onClick={() => setIsVisible(!isVisible)}>
-      <div className="header-user__name">Войти</div> 
+      <Link to="/login" className="header-user__name">Войти</Link> 
+      {/* <div className="header-user__name">Войти</div>  */}
       {/* <div className="header-user__name">Пантелеймон</div>  */}
       {/* <div className="user__list-item" style={{ display: 'flex' }}>
         <div
