@@ -1,16 +1,18 @@
 const TOKEN_KEY = "jwt-token";
 const REFRESH_KEY = "jwt-refresh-token";
 const EXPIRES_KEY = "jwt-expires";
-const USERID_KEY = "user-local-id";
+const USERID_KEY = "userId";
 
 export function setTokens({
   refreshToken,
   accessToken,
   userId,
+  role,
   expiresIn = 3600
 }) {
   const expiresDate = new Date().getTime() + expiresIn * 1000;
   localStorage.setItem(USERID_KEY, userId);
+  localStorage.setItem('role', role);
   localStorage.setItem(TOKEN_KEY, accessToken);
   localStorage.setItem(REFRESH_KEY, refreshToken);
   localStorage.setItem(EXPIRES_KEY, expiresDate);
@@ -28,11 +30,15 @@ export function getTokenExpiresDate() {
 export function getUserId() {
   return localStorage.getItem(USERID_KEY);
 }
+export function getUserRole() {
+  return localStorage.getItem('role');
+}
 export function removeAuthData() {
   localStorage.removeItem(USERID_KEY);
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(REFRESH_KEY);
   localStorage.removeItem(EXPIRES_KEY);
+  localStorage.removeItem('role');
 }
 
 const localStorageService = {
@@ -41,6 +47,7 @@ const localStorageService = {
   getRefreshToken,
   getTokenExpiresDate,
   getUserId,
+  getUserRole,
   removeAuthData
 };
 

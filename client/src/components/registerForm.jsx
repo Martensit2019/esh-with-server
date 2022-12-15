@@ -1,7 +1,6 @@
 import React from 'react'
 import TextField from './cart/textField'
 import { validator } from '../utils/validator'
-// import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { signUp } from '../store/auth'
 
@@ -18,7 +17,7 @@ const RegisterForm = () => {
 
   const validatorConfig = {
     email: {
-      isRequired: { message: 'Электронная почта обязательна для запоолнения' },
+      isRequired: { message: 'Электронная почта обязательна для заполнения' },
       isEmail: { message: 'Email введён некорректно' },
     },
     password: {
@@ -46,7 +45,6 @@ const RegisterForm = () => {
     const isValid = validate()
     if (!isValid) return
     console.log(data)
-    // axios.post('http://localhost:8080/api/auth/signUp', data)
     dispatch(signUp(data))
   }
   const handleChange = ({ target }) => {

@@ -12,6 +12,7 @@ import { getProducts, getProductsLoading, getTotalProducts, loadProductsByCatego
 
 const CategoryPage = () => {
   const { slug } = useParams()
+  console.log('slug', slug);
   const dispatch = useDispatch()
   const categories = useSelector(getCategories())
   const isCategoriesLoading = useSelector(getCategoriesLoading())

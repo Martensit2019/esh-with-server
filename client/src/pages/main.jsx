@@ -1,16 +1,11 @@
 import React from 'react'
 import CategoryCard from '../components/category/categoryCard'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCategories, getCategoriesLoading, loadCategories } from '../store/categories'
+import { useSelector } from 'react-redux'
+import { getCategories, getCategoriesLoading } from '../store/categories'
 
 const Main = () => {
-  const dispatch = useDispatch()
   const categories = useSelector(getCategories())
   const isLoading = useSelector(getCategoriesLoading())
-
-  React.useEffect(()=>{
-    dispatch(loadCategories())
-  }, [])
 
   return (
     <main className="main">

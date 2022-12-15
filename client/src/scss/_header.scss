@@ -143,12 +143,16 @@
 .header-user {
   position: relative;
   cursor: pointer;
+  &__name{
+    color: #000;
+  }
   &__list {
     position: absolute;
-    width: 120px;
+    width: 140px;
     padding: 20px 10px 10px;
-    right: 0;
+    right: -15px;
     background-color: #ffc42e;
+    z-index: 10;
   }
   &__item {
     padding: 7px 0;

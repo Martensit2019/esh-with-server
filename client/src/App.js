@@ -1,62 +1,19 @@
 import React from 'react'
-import { Routes, Route, Navigate, useRoutes } from 'react-router-dom'
-import Catalog from './pages/catalog'
-import Baby from './pages/dlya-malyshey'
-import Product from './pages/product'
-import Main from './pages/main'
-import Boys from './pages/dlya-malchikov'
-import Girls from './pages/dlya-devochek'
-import Mens from './pages/dlya-vzroslyh'
-import MainLayout from './layouts/MainLayout'
-import AdminIndex from './pages/admin'
-import AdminLayout from './layouts/AdminLayout'
+import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route, Navigate, useRoutes, useLocation } from 'react-router-dom'
 
 import routes from './routes'
+import localStorageService from './services/localStorage.service'
+import AuthLoader from './components/hoc/authLoader'
 
 function App() {
-  const elements = useRoutes(routes)
-  
-  return elements
+  const role = localStorageService.getUserRole()
+  const location = useLocation()
+  const elements = useRoutes(routes(role, location))
 
-  // return (
-  //   <>
-  //     <Routes>
-  //       <Route
-  //         path="/"
-  //         element={
-  //           <MainLayout>
-  //             <Main />
-  //           </MainLayout>
-  //         }
-  //       />
-  //       <Route
-  //         path="/catalog"
-  //         element={
-  //           <MainLayout>
-  //             <Catalog />
-  //           </MainLayout>
-  //         }
-  //       />
-  //       <Route
-  //         path="/admin"
-  //         element={
-  //           <AdminLayout>
-  //             <AdminIndex />
-  //           </AdminLayout>
-  //         }
-  //       />
-  //       <Route path="/dlya-malyshey" element={<Baby />} />
-  //       <Route path="/dlya-malchikov" element={<Boys />} />
-  //       <Route path="/dlya-devochek" element={<Girls />} />
-  //       <Route path="/dlya-vzroslyh" element={<Mens />} />
-  //       <Route path="/product" element={<Product />} />
-  //       {/* <Route path="/" exact element={<Main/>} /> */}
-  //       {/* <Redirect to="/" /> */}
+ 
 
-  //       <Route path="*" element={<Navigate to="/dlya-vzroslyh" />} />
-  //     </Routes>
-  //   </>
-  // )
+  return <AuthLoader>{elements}</AuthLoader>
 }
 
 export default App

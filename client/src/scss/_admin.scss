@@ -1,0 +1,89 @@
+.admin{
+  &__wrapper{
+    display: flex;
+  height: 100vh;
+  }
+  &__sidebar{
+    // width: 200px;
+    height: inherit;
+    padding: 15px;
+    
+  }
+  &__user{
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 700;
+  }
+  &__content{
+    width: 100%;
+    padding: 15px;
+  }
+  &__btn{
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #ffc42e;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ffc42e;
+    cursor: pointer;
+    &:hover {
+      background-color: #ffc42e;
+      color: #fff;
+    }
+  }
+  .admin-menu{
+    &__item{
+      padding: 10px 0;
+      cursor: pointer;
+    }
+  }
+}
+.admin-category{
+  // display: flex;
+  &__title{
+    display: inline-block;
+    margin-right: 30px;
+  }
+  
+
+}
+.admin-category-slug{
+  padding: 30px;
+  &__wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #ffc42e;
+    padding: 20px;
+    text-align: center;
+  }
+  &__title{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  &__img{
+    margin-bottom: 25px;
+    img{
+         height: 300px;
+    }
+ 
+  }
+  &__descr{
+    text-align: left;
+    margin-bottom: 25px;
+  }
+  &__status{
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #ffc42e;;
+    border-radius: 20px;
+    margin-bottom: 25px;
+  }
+  .admin__btn + .admin__btn{
+    margin-left: 25px;
+  }
+ }

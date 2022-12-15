@@ -1,21 +1,18 @@
-import React from 'react';
-const AdminLayout = ({children}) => {
-  return ( 
-    <div className="admin" style={{ height: '100vh', border: '1px solid red'}}>
-        <div className="admin__wrapper" style={{ display: 'flex'}}>
-          <div className="admin-sidebar" style={{border: '1px solid', width: '100px'}}>
-            <ul>
-              <li>Товары</li>
-              <li>Категории</li>
-              <li>Заказы</li>
-              <li>Покупатели</li>
-            </ul>
+import React from 'react'
+import { Link, Outlet } from 'react-router-dom';
+import AdminSidebar from '../components/admin/adminSidebar'
+const AdminLayout = () => {
+  return (
+    <div className="admin">
+      <div className="admin__wrapper">
+        <AdminSidebar />
+        <div className="admin__content">
+        <Link to="/" role="button" className="admin__btn">Перейти на сайт</Link>
+          <Outlet />
           </div>
-        <div className="admin-main" style={{ width: '100%', border: '1px solid green'}}>main {children} </div>
-        </div>
-      
+      </div>
     </div>
-   );
+  )
 }
- 
-export default AdminLayout;
+
+export default AdminLayout

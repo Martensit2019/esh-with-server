@@ -81,7 +81,6 @@ const CartOrder = ({finishOrder}) => {
           <div className="order-details__col">
             <h3 className="order-subtitle">Информация о покупателе</h3>
             <TextField placeholder="ФИО" value={data.fio} name="fio" error={errors.fio} onChange={handleChange} />
-            <TextField placeholder="Email" value={data.email} name="email" error={errors.email} onChange={handleChange} />
             <TextField placeholder="Телефон" value={data.phone} name="phone" error={errors.phone} onChange={handleChange} />
             <TextField placeholder="Адрес" value={data.address} name="address" error={errors.address} onChange={handleChange} />
           </div>

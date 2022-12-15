@@ -1,13 +1,17 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import localStorageService from '../../services/localStorage.service'
 import Basket from './basket'
 import CartOrder from './cartOrder'
 
 const FullCart = () => {
+  const currentUserId = localStorageService.getUserId()
   const [isShowCartOrder, setIsShowCartOrder] = React.useState(false)
   const [isThanks, setIsThanks] = React.useState(false)
 
   return (
     <>
+    currentUserId-{currentUserId}
       {!isThanks ? (
         <div className="cart-full">
           <Basket />
@@ -16,7 +20,7 @@ const FullCart = () => {
               Оформить заказ
             </button>
           )}
-          {isShowCartOrder && <CartOrder />}
+          {isShowCartOrder && currentUserId && <CartOrder />}
           <CartOrder finishOrder={() => setIsThanks(true)} />
         </div>
       ) : (

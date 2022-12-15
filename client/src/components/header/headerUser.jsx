@@ -1,25 +1,35 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getCurrentUser, logOut } from '../../store/auth'
 const HeaderUser = () => {
+  const dispatch = useDispatch()
+  const currentUser = useSelector(getCurrentUser())
   const [isVisible, setIsVisible] = React.useState(false)
-  return (
+  return currentUser === null ? (
+    <div className="header-user">
+      <Link to="/login" className="header-user__name">
+        Войти
+      </Link>
+    </div>
+  ) : (
     <div className="header-user" onClick={() => setIsVisible(!isVisible)}>
-      <Link to="/login" className="header-user__name">Войти</Link> 
-      {/* <div className="header-user__name">Войти</div>  */}
-      {/* <div className="header-user__name">Пантелеймон</div>  */}
-      {/* <div className="user__list-item" style={{ display: 'flex' }}>
-        <div
-          style={{ width: '30px', border: '1px solid: red', borderRadius: '50%', display: 'flex', alignItems: 'center', textAlign: 'center' }}
-        >
-          <img src="/images/icons/user.svg" alt="" />
-        </div>
-      </div> */}
+      <div className="header-user__name">{currentUser.fio}</div>
       {isVisible && (
         <ul className="header-user__list">
+          {currentUser.role==='admin' &&<li className="header-user__item">
+            <Link to="/admin" className="header-user__link">
+              Панель администратора
+            </Link>
+          </li>}
           <li className="header-user__item">
-          <Link to="/user-profile" className="header-user__link">Профиль</Link>
+            <Link to="/profile" className="header-user__link">
+              Профиль
+            </Link>
           </li>
-          <li className="header-user__item">Выход</li>
+          <li className="header-user__item" onClick={() => dispatch(logOut())}>
+            Выход
+          </li>
         </ul>
       )}
     </div>
