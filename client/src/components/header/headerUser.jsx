@@ -1,11 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getCurrentUser, logOut } from '../../store/auth'
 const HeaderUser = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const currentUser = useSelector(getCurrentUser())
   const [isVisible, setIsVisible] = React.useState(false)
+
+const handleClick= ()=>{
+  dispatch(logOut())
+  navigate("login")
+}
+
   return currentUser === null ? (
     <div className="header-user">
       <Link to="/login" className="header-user__name">
@@ -27,7 +34,7 @@ const HeaderUser = () => {
               Профиль
             </Link>
           </li>
-          <li className="header-user__item" onClick={() => dispatch(logOut())}>
+          <li className="header-user__item" onClick={handleClick}>
             Выход
           </li>
         </ul>

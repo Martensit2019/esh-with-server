@@ -2,7 +2,7 @@ import React from 'react'
 import TextField from './cart/textField'
 import { validator } from '../utils/validator'
 import { useDispatch, useSelector } from 'react-redux'
-import { signUp } from '../store/auth'
+import { getAuthErrors, signUp } from '../store/auth'
 
 const RegisterForm = () => {
   const dispatch = useDispatch()
@@ -14,8 +14,12 @@ const RegisterForm = () => {
     phone: '',
     address: '',
   })
-
+  const registerError = useSelector(getAuthErrors())
   const validatorConfig = {
+    fio:{
+      isRequired: { message: 'Имя обязательно для заполнения' },
+      min: { message: 'Имя должно соcтоять минимум из 2 символов', valie: 2 },
+    },
     email: {
       isRequired: { message: 'Электронная почта обязательна для заполнения' },
       isEmail: { message: 'Email введён некорректно' },
@@ -57,6 +61,8 @@ const RegisterForm = () => {
       <TextField placeholder="Пароль" type="password" value={data.password} name="password" error={errors.password} onChange={handleChange} />
       <TextField placeholder="Телефон" value={data.phone} name="phone" error={errors.phone} onChange={handleChange} />
       <TextField placeholder="Адрес" value={data.address} name="address" error={errors.address} onChange={handleChange} />
+
+      {registerError && <p className="order-form__error begorebtn">{registerError}</p>}
       <button type="submit" disabled={!isValid} className="auth-page__btn">
         Отправить
       </button>

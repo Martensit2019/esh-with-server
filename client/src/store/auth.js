@@ -1,6 +1,7 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import authService from '../services/auth.service'
 import localStorageService from '../services/localStorage.service'
+import { generateAuthError } from '../utils/generateAuthError'
 
 const initialState=localStorageService.getAccessToken()?{
   entities: null,
@@ -60,9 +61,9 @@ const authSlice = createSlice({
     // userUpdateSuccess: (state, action) => {
     //   state.entities[state.entities.findIndex((u) => u._id === action.payload._id)] = action.payload
     // },
-    // authRequested: (state) => {
-    //   state.error = null
-    // },
+    authRequested: (state) => {
+      state.error = null
+    },
   },
 })
 
@@ -70,7 +71,7 @@ const { reducer: authReducer, actions } = authSlice
 
 export const { authRequestSuccess, authRequestFailed, currentUserRequestSuccess, currentUserRequestFailed, userLoggedOut, setCurrentUser } = actions
 
-const authRequested = createAction('users/authRequested')
+const authRequested = createAction('auth/authRequested')
 
 export const logIn =
   ({ payload, redirect }) =>
@@ -90,8 +91,8 @@ export const logIn =
     } catch (error) {
       const { code, message } = error.response.data.error
       if (code === 400) {
-        // const errorMessage = generateAuthError(message);
-        // dispatch(authRequestFailed(errorMessage));
+        const errorMessage = generateAuthError(message);
+        dispatch(authRequestFailed(errorMessage));
       } else {
         dispatch(authRequestFailed(error.message))
       }
@@ -106,7 +107,13 @@ export const signUp = (payload) => async (dispatch) => {
     dispatch(setCurrentUser(data.currentUser))
     dispatch(authRequestSuccess({ userId: data.userId }))
   } catch (error) {
-    dispatch(authRequestFailed(error.message))
+    const { code, message } = error.response.data.error
+    if (code === 400) {
+      const errorMessage = generateAuthError(message);
+      dispatch(authRequestFailed(errorMessage));
+    } else {
+      dispatch(authRequestFailed(error.message))
+    }
   }
 }
 
@@ -135,6 +142,6 @@ export const updateUser =(payload)=>async (dispatch) =>{
 }
 
 export const getCurrentUser = () => (state) => state.auth.currentUser
-
+export const getAuthErrors = () => (state) => state.auth.error;
 
 export default authReducer
