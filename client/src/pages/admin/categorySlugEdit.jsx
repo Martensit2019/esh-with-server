@@ -17,6 +17,7 @@ const AdminCategorySlugEdit = () => {
   const isLoading = useSelector(getCategoriesLoading())
   // const { id, title, imgName, descr, isShow } = !isLoading ? categories.filter((c) => c.slug === slug)[0] : {}
   const [data, setData] = React.useState({
+    _id: '',
     title: '',
     descr: '',
     isShow: true,
@@ -50,6 +51,9 @@ const AdminCategorySlugEdit = () => {
     
     dispatch(updateCategory(data))
   }
+  const handleRemove = ()=>{
+    console.log('remove', data._id);
+  }
 
   const handleChange = ({ target }) => {
     setData((prevState) => ({
@@ -72,6 +76,9 @@ const AdminCategorySlugEdit = () => {
               </button>
               <button type="button" className="admin__btn" onClick={() => navigate(-1)}>
                 Назад
+              </button>
+              <button type="button" className="admin__btn del" onClick={handleRemove}>
+                Удалить
               </button>
             </form>
           </div>

@@ -31,6 +31,14 @@
       background-color: #ffc42e;
       color: #fff;
     }
+    &.del{
+      color: #fff;
+      background-color: red;
+      border: 1px solid red;
+      &:hover{
+        transform: scale(1.1);
+      }
+    }
   }
   .admin-menu {
     &__item {

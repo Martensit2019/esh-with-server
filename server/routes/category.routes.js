@@ -3,8 +3,8 @@ const Category = require('../models/Category')
 const auth = require('../middleware/auth.middleware')
 const router = express.Router({ mergeParams: true })
 
-// router.get('/', async (req, res) => {
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
+// router.get('/', auth, async (req, res) => {
   const { isShow } = req.query
   try {
     const list = await Category.find(req.query.isShow && { isShow: req.query.isShow })
@@ -16,7 +16,7 @@ router.get('/', auth, async (req, res) => {
   }
 })
 
-router.patch('/:categoryId', async (req, res) => {
+router.patch('/:categoryId', auth, async (req, res) => {
   console.log(req.params)
   console.log(req.body)
   try {
@@ -29,13 +29,10 @@ router.patch('/:categoryId', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
-  console.log('catrout', req.body)
-  // router.post(auth, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
     const newCategory = await Category.create({
       ...req.body,
-      // userId: req.user._id,
     })
     res.status(201).send(newCategory)
   } catch (e) {
