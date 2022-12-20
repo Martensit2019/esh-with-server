@@ -18,7 +18,7 @@ module.exports = (req, res, nex) => {
 
     console.log('dec', data)
     
-    req.category = data
+    req.user = data
     next()
   } catch (e) {
     res.status(401).json({ message: 'Unauthorized' })
