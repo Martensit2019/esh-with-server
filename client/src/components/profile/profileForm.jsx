@@ -51,7 +51,7 @@ const ProfileForm = ({ user }) => {
       <TextField placeholder="ФИО" value={data.fio} name="fio" error={errors.fio} onChange={handleChange} />
       <TextField placeholder="Телефон" value={data.phone} name="phone" error={errors.phone} onChange={handleChange} />
       <TextField placeholder="Адрес" value={data.address} name="address" error={errors.address} onChange={handleChange} />
-      <button type="button" className="profile-page__btn profile-page__btn--save" onClick={save}>
+      <button type="button" className="profile-page__btn profile-page__btn--save" disabled={Object.keys(errors).length} onClick={save}>
         Сохранить изменения
       </button>
     </>

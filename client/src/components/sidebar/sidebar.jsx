@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux'
 import Burger from '../header/burger'
 
 const Sidebar = () => {
-  return null
-  // const isOpen = useSelector((state) => state.filter.isOpenSidebar)
+  // return null
+  const isOpen = useSelector((state) => state.filter.isOpenSidebar)
   // const [minPrice, setMinPrice] = useState(0)
   // const [minPieces, setMinPieces] = useState(0)
   // const [minMinifigs, setMinMinifigs] = useState(0)
@@ -86,30 +86,30 @@ const Sidebar = () => {
   //   }
   // }, [minPrice, minPieces, minMinifigs, minYear, maxPrice, maxPieces, maxMinifigs, maxYear])
 
-  // return (
+  return (
 
-  //   <div className={'sidebar' + (isOpen ? ' open' : '')}>
-  //     <div className="sidebar__top">
-  //       <div className="sidebar__burger"><Burger /></div>
+    <div className={'sidebar' + (isOpen ? ' open' : '')}>
+      <div className="sidebar__top">
+        <div className="sidebar__burger"><Burger /></div>
         
-  //     </div>
-  //     <div className="sidebar-form__wrapper">
-  //       <form>
-  //         {!isLoadingMinPrice && !isLoadingMaxPrice && <MultiRange label="Цена, руб." min={minPrice} max={maxPrice} />}
-  //         {isLoadingMinPieces !== null && !isLoadingMaxPieces && <MultiRange label="Количество деталей, шт." min={minPieces} max={maxPieces} />}
-  //         {minMinifigs!==null && !isLoadingMaxMinifigs && <MultiRange label="Количество минифигурок, шт." min={minMinifigs} max={maxMinifigs} />}
-  //         {!isLoadingMinYear && !isLoadingMaxYear && <MultiRange label="Год выпуска" min={minYear} max={maxYear} />}
+      </div>
+      {/* <div className="sidebar-form__wrapper">
+        <form>
+          {!isLoadingMinPrice && !isLoadingMaxPrice && <MultiRange label="Цена, руб." min={minPrice} max={maxPrice} />}
+          {isLoadingMinPieces !== null && !isLoadingMaxPieces && <MultiRange label="Количество деталей, шт." min={minPieces} max={maxPieces} />}
+          {minMinifigs!==null && !isLoadingMaxMinifigs && <MultiRange label="Количество минифигурок, шт." min={minMinifigs} max={maxMinifigs} />}
+          {!isLoadingMinYear && !isLoadingMaxYear && <MultiRange label="Год выпуска" min={minYear} max={maxYear} />}
 
-  //         {/* <MultiRange label='Цена, руб.' min={minPrice} max={maxPrice} />
-  //         <MultiRange label='Количество деталей, шт.' min={minPieces} max={maxPieces} />
-  //         <MultiRange label='Количество минифигурок, шт.' min={minMinifigs} max={maxMinifigs} />
-  //         <MultiRange label='Год выпуска' min={minYear} max={maxYear} /> */}
+          <MultiRange label='Цена, руб.' min={minPrice} max={maxPrice} />
+          <MultiRange label='Количество деталей, шт.' min={minPieces} max={maxPieces} />
+          <MultiRange label='Количество минифигурок, шт.' min={minMinifigs} max={maxMinifigs} />
+          <MultiRange label='Год выпуска' min={minYear} max={maxYear} />
 
-  //         <button type='button' className="sidebar-form__btn">Применить фильтр</button>
-  //       </form>
-  //     </div>
-  //   </div>
-  // )
+          <button type='button' className="sidebar-form__btn">Применить фильтр</button>
+        </form>
+      </div> */}
+    </div>
+  )
 }
 
 export default Sidebar

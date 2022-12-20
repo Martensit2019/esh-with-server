@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/breadcrumbs/breadcrumbs'
 import Pagination from '../components/pagination/pagination'
 import ProductsList from '../components/products/productsList'
 import TopFilter from '../components/topFilter/topFilter'
+import Loader from '../components/ui/loader'
 import { getCurrentPage, getProductsPerPage, getSelectedSort, setCurrentPage } from '../store/filter'
 import { getProducts, getProductsLoading, getTotalProducts, loadProductsByType } from '../store/products'
 
@@ -42,7 +43,7 @@ const Girls = () => {
               />
             </>
           ) : (
-            <h1>Загрузка...</h1>
+            <Loader />
           )}
         </div>
       </div>

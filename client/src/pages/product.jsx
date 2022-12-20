@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs'
 import { useLocation } from 'react-router-dom'
 import { getProducts, getProductsLoading, loadProductBySlug } from '../store/products'
+import Loader from '../components/ui/loader'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -35,8 +36,8 @@ const Product = () => {
 
   return (
     <div className="product-page">
-      <div className="container">
-        {!isProductsLoading && <Breadcrumbs list={['Каталог', products[0].title]} />}
+      {!isProductsLoading ? <div className="container">
+        <Breadcrumbs list={['Каталог', products[0].title]} />
         <div className="product-page__inner">
           <div className="product-page__img">
             <img src={imgUrl} alt="" />
@@ -85,7 +86,7 @@ const Product = () => {
           </div>
         </div>
         <div className="product-page__descr">{product.description}</div>
-      </div>
+      </div>:<Loader />}
     </div>
   )
 }

@@ -2,13 +2,15 @@
   width: 0;
   overflow: hidden;
   position: relative;
-  // width: 60px;
-  // border: 1px solid #ffc42e;
+  width: 60px;
+  border: 1px solid #ffc42e;
   background-color: #ffc42e;
  
   @media (max-width: 1280px) {
     position: fixed;
+    width: 0;
     // height: 100vh;
+    z-index: 200;
   }
   // padding-top: 53px;
   &.open {
@@ -18,7 +20,8 @@
   }
   .sidebar__top{
      background-color: #ffc42e;
-     height: 122px;
+     height: 100vh;
+    //  height: 122px;
   }
   .sidebar__burger{
     position: absolute;
@@ -27,6 +30,7 @@
     @media(max-width:1280px){
       right: 15px;
       left: auto;
+      z-index: 100;
     }
   }
   .sidebar-form {

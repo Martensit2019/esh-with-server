@@ -6,6 +6,7 @@ import CategoryHeader from '../components/category/categoryHeader'
 import Pagination from '../components/pagination/pagination'
 import ProductsList from '../components/products/productsList'
 import TopFilter from '../components/topFilter/topFilter'
+import Loader from '../components/ui/loader'
 import { getCategories, getCategoriesLoading, loadCategories } from '../store/categories'
 import { getCurrentPage, getProductsPerPage, getSelectedSort, setCurrentPage } from '../store/filter'
 import { getProducts, getProductsLoading, getTotalProducts, loadProductsByCategoryId } from '../store/products'
@@ -52,7 +53,8 @@ const CategoryPage = () => {
               onPageChange={(page) => dispatch(setCurrentPage(page))}
             />
           </div>
-        ):<h1>Загрузка...</h1>}
+          
+        ):<Loader />}
       </div>
     </div>
   )

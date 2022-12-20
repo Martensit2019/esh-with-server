@@ -3,9 +3,10 @@ import TextField from '../components/cart/textField'
 import { validator } from '../utils/validator'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAuthErrors, logIn } from '../store/auth'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
+  const location=useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [errors, setErrors] = React.useState({})
@@ -46,7 +47,8 @@ const LoginForm = () => {
     if (!isValid) return
     console.log(data)
     const redirect = 'REDIRECT' // откуда пришёл до логина
-    dispatch(logIn({ payload: data, redirect }))
+    let from = location.state?.from?.pathname || "/profile";
+    dispatch(logIn(data, ()=>{navigate(from, { replace: true })}))
       .unwrap()
       .then(() => {
         navigate("profile")

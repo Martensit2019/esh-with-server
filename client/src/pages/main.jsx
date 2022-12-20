@@ -2,18 +2,21 @@ import React from 'react'
 import CategoryCard from '../components/category/categoryCard'
 import { useSelector } from 'react-redux'
 import { getCategories, getCategoriesLoading } from '../store/categories'
+import Loader from '../components/ui/loader'
 
 const Main = () => {
   const categories = useSelector(getCategories())
   const isLoading = useSelector(getCategoriesLoading())
+  
 
   return (
+    
     <main className="main">
       <div className="container">
         <h1 className="title-general">Серии конструкторов Лего</h1>
         <div className="main__wrapper">
           <div className="main__inner">
-            {!isLoading ? categories.map((category) => <CategoryCard category={category} key={category.id} />) : 'Loading...'}
+            {!isLoading ? categories.map((category) => <CategoryCard category={category} key={category.id} />) : <Loader />}
           </div>
         </div>
         {/* Надо будет ещё сделать три блока

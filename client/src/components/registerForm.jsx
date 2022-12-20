@@ -56,7 +56,12 @@ const RegisterForm = () => {
   }
   return (
     <form className="auth-page__form" onSubmit={handleSubmit}>
-      <TextField placeholder="ФИО" value={data.fio} name="fio" error={errors.fio} onChange={handleChange} />
+      <TextField 
+      placeholder="ФИО" 
+      value={data.fio} 
+      name="fio" 
+      error={errors.fio} 
+      onChange={handleChange} />
       <TextField placeholder="Email" value={data.email} name="email" error={errors.email} onChange={handleChange} />
       <TextField placeholder="Пароль" type="password" value={data.password} name="password" error={errors.password} onChange={handleChange} />
       <TextField placeholder="Телефон" value={data.phone} name="phone" error={errors.phone} onChange={handleChange} />

@@ -79,6 +79,11 @@
       border-radius: 20px;
       margin-bottom: 25px;
     }
+    .admin__btn:disabled:hover {
+      background-color: transparent;
+      color: #ffc42e;
+      cursor: default;
+    }
     .admin__btn + .admin__btn {
       margin-left: 25px;
     }

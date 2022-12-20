@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AdminTableHeader from '../../components/admin/adminTableHeader'
 import AdminTableItem from '../../components/admin/adminTableItem'
+import Loader from '../../components/ui/loader';
 import { getCategories, getCategoriesLoading, loadCategories } from '../../store/categories'
 
 const titles = ['Фото', 'Наименование', 'Активность']
@@ -30,11 +31,11 @@ const AdminCategoryList = () => {
            <div className="basket__inner" style={{'minWidth': '620px'}}>
              <AdminTableHeader titles={titles} />
              {categories.map((item) => (
-               <AdminTableItem item={item} key={item.id} />
+               <AdminTableItem item={item} key={item._id} />
              ))}
            </div>
          </div>
-       ):(<h1>Loading...</h1>)}
+       ):(<Loader />)}
      </div>
     
      );

@@ -8,6 +8,7 @@ import ProductsList from '../components/products/productsList'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentPage, getProductsPerPage, getSelectedSort, setCurrentPage } from '../store/filter'
 import { getProducts, getProductsLoading, getTotalProducts, loadAllProducts } from '../store/products'
+import Loader from '../components/ui/loader'
 
 const Catalog = () => {
   const dispatch = useDispatch()
@@ -49,7 +50,7 @@ const Catalog = () => {
           <Breadcrumbs list={['Каталог']} />
           <h1 className="title-general">Каталог конструкторов LEGO для детей</h1>
           <TopFilter />
-          {!isLoading ? <ProductsList products={products} />:<h1>Загрузка...</h1>}
+          {!isLoading ? <ProductsList products={products} />:<Loader />}
           
           <Pagination
             className="pagination-bar"

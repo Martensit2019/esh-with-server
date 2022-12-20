@@ -23,6 +23,13 @@ class TokenService {
     const token = await Token.create({ user: userId, refreshToken })
     return token
   }
+  validateAccess(accessToken) {
+    try {
+      return jwt.verify(accessToken, config.get('accessSercet'))
+    } catch (e) {
+      return null
+    }
+  }
   validateRefresh(refreshToken) {
     try {
       return jwt.verify(refreshToken, config.get('refreshSercet'))

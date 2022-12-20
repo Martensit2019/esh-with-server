@@ -3,28 +3,23 @@ import authService from '../services/auth.service'
 import localStorageService from '../services/localStorage.service'
 import { generateAuthError } from '../utils/generateAuthError'
 
-const initialState=localStorageService.getAccessToken()?{
-  entities: null,
-  currentUser: null,
-  auth: {userId:localStorageService.getUserId()},
-  isLoggedIn: true,
-}:{
-  entities: null,
-    currentUser: null,
-    auth: null,
-    isLoggedIn: false,
-}
+const initialState = localStorageService.getAccessToken()
+  ? {
+      entities: null,
+      currentUser: null,
+      auth: { userId: localStorageService.getUserId() },
+      isLoggedIn: true,
+    }
+  : {
+      entities: null,
+      currentUser: null,
+      auth: null,
+      isLoggedIn: false,
+    }
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // initialState: {
-  //   entities: null,
-  //   currentUser: null,
-  //   auth: null,
-  //   isLoggedIn: false,
-  // },
-
   reducers: {
     authRequestSuccess: (state, action) => {
       state.auth = action.payload
@@ -34,7 +29,7 @@ const authSlice = createSlice({
       state.error = action.payload
     },
     currentUserRequestSuccess: (state, action) => {
-      console.log('fromAuth', action.payload);
+      console.log('fromAuth', action.payload)
       // state.auth = action.payload
       state.isLoggedIn = true
     },
@@ -73,31 +68,30 @@ export const { authRequestSuccess, authRequestFailed, currentUserRequestSuccess,
 
 const authRequested = createAction('auth/authRequested')
 
-export const logIn =
-  ({ payload, redirect }) =>
-  async (dispatch) => {
-    console.log('payload from auth', payload)
-    console.log('redirect from auth', redirect)
-    const { email, password } = payload
-    dispatch(authRequested())
-    try {
-      const data = await authService.login({ email, password })
-      console.log('data from storeAuth', data)
-      dispatch(authRequestSuccess({ userId: data.userId }))
-      localStorageService.setTokens({...data, role: data.currentUser.role})
-      // localStorageService.setTokens(data)
-      dispatch(setCurrentUser(data.currentUser))
-      // history.push(redirect);
-    } catch (error) {
-      const { code, message } = error.response.data.error
-      if (code === 400) {
-        const errorMessage = generateAuthError(message);
-        dispatch(authRequestFailed(errorMessage));
-      } else {
-        dispatch(authRequestFailed(error.message))
-      }
+export const logIn = (payload, redirect) => async (dispatch) => {
+  console.log('payload from auth', payload)
+  console.log('redirect from auth', redirect)
+  const { email, password } = payload
+  dispatch(authRequested())
+  try {
+    const data = await authService.login({ email, password })
+    console.log('data from storeAuth', data)
+    dispatch(authRequestSuccess({ userId: data.userId }))
+    localStorageService.setTokens({ ...data, role: data.currentUser.role })
+    // localStorageService.setTokens(data)
+    dispatch(setCurrentUser(data.currentUser))
+    // history.push(redirect);
+    redirect()
+  } catch (error) {
+    const { code, message } = error.response.data.error
+    if (code === 400) {
+      const errorMessage = generateAuthError(message)
+      dispatch(authRequestFailed(errorMessage))
+    } else {
+      dispatch(authRequestFailed(error.message))
     }
   }
+}
 
 export const signUp = (payload) => async (dispatch) => {
   dispatch(authRequested())
@@ -109,8 +103,8 @@ export const signUp = (payload) => async (dispatch) => {
   } catch (error) {
     const { code, message } = error.response.data.error
     if (code === 400) {
-      const errorMessage = generateAuthError(message);
-      dispatch(authRequestFailed(errorMessage));
+      const errorMessage = generateAuthError(message)
+      dispatch(authRequestFailed(errorMessage))
     } else {
       dispatch(authRequestFailed(error.message))
     }
@@ -131,10 +125,10 @@ export const getUserFromLS = (userId) => async (dispatch) => {
     dispatch(authRequestFailed(error.message))
   }
 }
-export const updateUser =(payload)=>async (dispatch) =>{
+export const updateUser = (payload) => async (dispatch) => {
   dispatch(authRequested())
-  try{
-    const data = await authService.updateUserData( payload )
+  try {
+    const data = await authService.updateUserData(payload)
     dispatch(setCurrentUser(data))
   } catch (error) {
     dispatch(authRequestFailed(error.message))
@@ -142,6 +136,6 @@ export const updateUser =(payload)=>async (dispatch) =>{
 }
 
 export const getCurrentUser = () => (state) => state.auth.currentUser
-export const getAuthErrors = () => (state) => state.auth.error;
+export const getAuthErrors = () => (state) => state.auth.error
 
 export default authReducer
