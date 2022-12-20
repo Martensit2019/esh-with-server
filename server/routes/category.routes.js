@@ -6,7 +6,6 @@ const router = express.Router({ mergeParams: true })
 // router.get('/', async (req, res) => {
 router.get('/', auth, async (req, res) => {
   const { isShow } = req.query
-  console.log('query', isShow)
   try {
     const list = await Category.find(req.query.isShow && { isShow: req.query.isShow })
     res.status(200).send(list)

@@ -1,12 +1,11 @@
 const tokenService = require('../services/token.service')
 
-module.exports = (req, res, nex) => {
+module.exports = (req, res, next) => {
   if (req.method === 'OPTIONS') {
     return next()
   }
   try {
     const token = req.headers.authorization.split(' ')[1]
-    console.log(token)
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized' })
     }
@@ -15,10 +14,9 @@ module.exports = (req, res, nex) => {
     if (!data) {
       return res.status(401).json({ message: 'Unauthorized' })
     }
-
-    console.log('dec', data)
     
     req.user = data
+    
     next()
   } catch (e) {
     res.status(401).json({ message: 'Unauthorized' })
