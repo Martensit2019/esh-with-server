@@ -48,7 +48,7 @@ const RegisterForm = () => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
-    console.log(data)
+    // console.log(data)
     dispatch(signUp(data))
   }
   const handleChange = ({ target }) => {

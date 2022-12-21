@@ -12,7 +12,6 @@ const handleClick= ()=>{
   dispatch(logOut())
   navigate("login")
 }
-console.log('currentUser', currentUser);
   return currentUser === null ? (
     <div className="header-user">
       <Link to="/login" className="header-user__name">

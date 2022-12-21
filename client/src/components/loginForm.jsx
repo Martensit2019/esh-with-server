@@ -45,7 +45,7 @@ const LoginForm = () => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
-    console.log(data)
+    // console.log(data)
     const redirect = 'REDIRECT' // откуда пришёл до логина
     let from = location.state?.from?.pathname || "/profile";
     dispatch(logIn(data, ()=>{navigate(from, { replace: true })}))

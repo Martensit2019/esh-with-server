@@ -19,7 +19,14 @@ const authService = {
   updateUserData: async(payload)=>{
     const {data} = await httpService.patch('user/' + localStorageService.getUserId(), payload)
     return data
-  }
+  },
+  refresh: async () => {
+    const { data } = await httpService.post("token", {
+        grant_type: "refresh_token",
+        refresh_token: localStorageService.getRefreshToken()
+    });
+    return data;
+}
 
 
 }

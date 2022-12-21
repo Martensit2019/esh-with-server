@@ -4,7 +4,7 @@ import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import RadioField from '../../components/cart/radioField'
 import GeneralButton from '../../components/ui/generalButton'
 import TextField from '../../components/ui/textField'
-import { getCategories, getCategoriesLoading, updateCategory } from '../../store/categories'
+import { getCategories, getCategoriesLoading, removeCategory, updateCategory } from '../../store/categories'
 import AdminTextArea from './ui/adminTextArea'
 import AdminTextField from './ui/adminTextField'
 
@@ -50,9 +50,12 @@ const AdminCategorySlugEdit = () => {
     // dispatch(signUp(data))
     
     dispatch(updateCategory(data))
+    navigate(-1)
   }
   const handleRemove = ()=>{
-    console.log('remove', data._id);
+    // console.log('remove', data._id);
+    dispatch(removeCategory(data._id))
+    navigate(-2)
   }
 
   const handleChange = ({ target }) => {

@@ -15,11 +15,11 @@ const FullCart = () => {
       {!isThanks ? (
         <div className="cart-full">
           <Basket />
-          {!isShowCartOrder && (
+          {/* {!isShowCartOrder && (
             <button className="product-page__btn cart-full__btn" onClick={() => setIsShowCartOrder(true)}>
               Оформить заказ
             </button>
-          )}
+          )} */}
           {isShowCartOrder && currentUserId && <CartOrder />}
           <CartOrder finishOrder={() => setIsThanks(true)} />
         </div>

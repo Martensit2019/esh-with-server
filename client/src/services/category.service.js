@@ -13,7 +13,12 @@ const categoryService = {
   update: async(payload)=>{    
     const {data} = await httpService.patch('category/' + payload._id, payload)
     return data
-  }
+  },
+  remove: async(payload)=>{    
+    const {data} = await httpService.delete('category/' + payload)
+    
+    return data
+  },
 }
 
 export default categoryService

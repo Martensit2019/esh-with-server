@@ -29,7 +29,6 @@ const authSlice = createSlice({
       state.error = action.payload
     },
     currentUserRequestSuccess: (state, action) => {
-      console.log('fromAuth', action.payload)
       // state.auth = action.payload
       state.isLoggedIn = true
     },
@@ -69,8 +68,6 @@ export const { authRequestSuccess, authRequestFailed, currentUserRequestSuccess,
 const authRequested = createAction('auth/authRequested')
 
 export const logIn = (payload, redirect) => async (dispatch) => {
-  console.log('payload from auth', payload)
-  console.log('redirect from auth', redirect)
   const { email, password } = payload
   dispatch(authRequested())
   try {

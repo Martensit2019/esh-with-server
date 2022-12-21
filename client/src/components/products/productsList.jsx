@@ -4,7 +4,6 @@ import ProductCard from './productCard'
 import ProductLine from './productLine'
 
 const ProductsList = ({ products }) => {
-  console.log('products', products);
   const activeGrid = useSelector((state) => state.filter.isGrid)
   return (
     <>

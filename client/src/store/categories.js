@@ -24,19 +24,24 @@ const categoriesSlice = createSlice({
       state.entities.push(action.payload)
     },
     categoryUpdateSuccessed: (state, action) => {
-      state.entities[state.entities.findIndex((c) => c._id === action.payload._id)]=action.payload
+      state.entities[state.entities.findIndex((c) => c._id === action.payload._id)] = action.payload
+    },
+    categoryRemoveSuccessed: (state, action) => {
+      state.entities.filter((c) => c._id !== action.payload)
     },
   },
 })
 
 const { reducer: categoriesReducer, actions } = categoriesSlice
-const { categoriesRequested, categoriesRecived, categoriesRequestFailed, categoryCreateSuccessed, categoryUpdateSuccessed } = actions
+const { categoriesRequested, categoriesRecived, categoriesRequestFailed, categoryCreateSuccessed, categoryUpdateSuccessed, categoryRemoveSuccessed } =
+  actions
 
 const categoryCreateFailed = createAction('categories/categoryCreateFailed')
 const categoryCreateRequested = createAction('categories/categoryCreateRequested')
 const categoryUpdateFailed = createAction('categories/categoryUpdateFailed')
 const categoryUpdateRequested = createAction('categories/categoryUpdateRequested')
-
+const categoryRemoveFailed = createAction('categories/categoryRemoveFailed')
+const categoryRemoveRequested = createAction('categories/categoryRemoveRequested')
 
 export const loadCategories = (payload) => async (dispatch) => {
   dispatch(categoriesRequested())
@@ -50,13 +55,12 @@ export const loadCategories = (payload) => async (dispatch) => {
 export const loadActiveCategories = () => async (dispatch) => {
   dispatch(categoriesRequested())
   try {
-    const data = await categoryService.fetchAll({'isShow': true})
+    const data = await categoryService.fetchAll({ isShow: true })
     dispatch(categoriesRecived(data))
   } catch (error) {
     dispatch(categoriesRequestFailed(error.message))
   }
 }
-
 
 export const createCategory = (payload) => async (dispatch) => {
   dispatch(categoryCreateRequested())
@@ -76,6 +80,19 @@ export const updateCategory = (payload) => async (dispatch) => {
     dispatch(categoryUpdateFailed(error.message))
   }
 }
+
+export const removeCategory = (categoryId) => async (dispatch) => {
+  dispatch(categoryRemoveRequested())
+  try {
+    const { content } = await categoryService.remove(categoryId)
+    if (!content) {
+      dispatch(categoryRemoveSuccessed(categoryId))
+    }
+  } catch (error) {
+    dispatch(categoriesRequestFailed(error.message))
+  }
+}
+
 // export const getCategoryId = (slug)
 
 export const getCategories = () => (state) => state.categories.entities

@@ -4,7 +4,6 @@ const router = express.Router({ mergeParams: true })
 
 router.get('/', async (req, res) => {
   const query = req.query
-  console.log('query', query)
   const filter = {}
   if (query.categoryId !== undefined) {
     filter.categoryId = query.categoryId

@@ -53,7 +53,7 @@ const CartOrder = ({finishOrder}) => {
     const isValid = validate()
     if (!isValid) return
     data.cart=cart
-    console.log(data)
+    // console.log(data)
     httpService.post('orders', data)
     // finishOrder()
   }

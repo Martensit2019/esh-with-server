@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RadioField = ({ options, classes, name, value, onChange }) => {
-  console.log(options, value);
+  // console.log(options, value);
   return (
     <>
       {options.map((option) => (

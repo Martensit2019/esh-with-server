@@ -32,7 +32,7 @@ const AdminCategoryCreate = () => {
     // const isValid = validate()
     // if (!isValid) return
     data.slug = translit(data.title)
-    console.log(data)
+    // console.log(data)
     
     dispatch(createCategory(data))
   }

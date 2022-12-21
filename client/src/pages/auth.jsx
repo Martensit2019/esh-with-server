@@ -2,8 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const Auth = () => {
-  const par=useParams()
-  console.log(par);
+  // const par=useParams()
   return ( <h1>Auth</h1> );
 }
  

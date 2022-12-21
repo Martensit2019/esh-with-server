@@ -12,8 +12,6 @@ const ProfileForm = ({ user }) => {
     phone: phone || 'не указан',
     address: address || 'не указан',
   })
-  console.log('user', user)
-  console.log('data', data)
   React.useEffect(() => {
     validate()
   }, [data])
@@ -38,12 +36,7 @@ const ProfileForm = ({ user }) => {
       }
     }
     const updatedUser = { ...user, fio: data.fio, phone: data.phone, address: data.address }
-    console.log('data', data)
-    console.log('user', user)
-    console.log('upd', updatedUser)
-   dispatch(updateUser(updatedUser))
-    // dispatch(logIn({ payload: data, redirect }))
-    
+    dispatch(updateUser(updatedUser))
   }
 
   return (
