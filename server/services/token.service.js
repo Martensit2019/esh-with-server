@@ -24,6 +24,7 @@ class TokenService {
     return token
   }
   validateAccess(accessToken) {
+    console.log('accessToken', accessToken);
     try {
       return jwt.verify(accessToken, config.get('accessSercet'))
     } catch (e) {
